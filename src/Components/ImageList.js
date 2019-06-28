@@ -9,10 +9,9 @@ class ImageList extends Component {
     super(props);
     this.state = {
       persons: [],
-      currentPage: null,
       numberOfItemPerPage: 200,
-      startIndex: 1,
-      endIndex: 100
+      startIndex: 0,
+      endIndex: 10
     };
 
     this.handleChangePage = this.handleChangePage.bind(this);
@@ -38,7 +37,7 @@ class ImageList extends Component {
       ));
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProp) {
     let endIndex = this.state.startIndex + this.state.numberOfItemPerPage;
     this.setState({
       endIndex
@@ -46,23 +45,24 @@ class ImageList extends Component {
   }
 
   handleChangePage(startIndex, endIndex) {
+    console.log("from HandlePage", startIndex, endIndex);
     this.setState({ startIndex, endIndex });
   }
 
   render() {
     return (
       <Container>
+        Image List
+        <Row>{this._getImageList(this.state.persons)}</Row>
         <Row>
           <Col sm={12}>
             <Paginator
               listLength={this.state.persons.length}
               numberOfItemPerPage={this.state.numberOfItemPerPage}
-              handleChangePage={this.state.handleChangePage}
+              handleChangePage={() => this.state.handleChangePage()}
             />
           </Col>
         </Row>
-        Image List
-        <Row>{this._getImageList(this.state.persons)}</Row>
       </Container>
     );
   }

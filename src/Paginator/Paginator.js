@@ -8,24 +8,24 @@ export default class Paginator extends Component {
       activePage: 1,
       totalPageNumber: this.getTotalPageNumber(this.props)
     };
-
     this.onChangePage = this.onChangePage.bind(this);
   }
 
   onChangePage(number) {
     if (number === 0 || number > this.state.totalPageNumber) return;
-
+    console.log(number);
     let startIndex = this.props.numberOfItemPerPage * (number - 1);
     let endIndex =
       this.props.numberOfItemPerPage * number < this.props.listLength
         ? this.props.numberOfItemPerPage * number
         : this.props.listLength;
-
+    console.log(startIndex, endIndex);
     this.setState({
       activePage: number
     });
 
     this.props.handleChangePage(startIndex, endIndex);
+    console.log(startIndex, endIndex);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -55,24 +55,28 @@ export default class Paginator extends Component {
     }
 
     return (
-      <Pagination bsSize="medium" className="users-pagination pull-right">
-        <PaginationItem>
-          <PaginationLink
-            first
-            href={() => this.onChangePage(this.state.activePage - 1)}
-            disabled={this.state.activePage === 1}
-            onClick={() => this.onChangePage(this.state.activePage - 1)}
-          />
-        </PaginationItem>
+      <React.Fragment>
+        <div className="pagination-wrapper">
+          <Pagination bsSize="medium" className="">
+            <PaginationItem className="">
+              <PaginationLink
+                previous
+                href="#"
+                disabled={this.state.activePage === 1}
+                onClick={() => this.onChangePage(this.state.activePage - 1)}
+              />
+            </PaginationItem>
 
-        {items}
-        <PaginationLink
-          previous
-          href="#"
-          disabled={this.state.activePage === this.state.totalPageNumber}
-          onClick={() => this.onChangePage(this.state.activePage + 1)}
-        />
-      </Pagination>
+            {items}
+            <PaginationLink
+              next
+              href="#"
+              disabled={this.state.activePage === this.state.totalPageNumber}
+              onClick={() => this.onChangePage(this.state.activePage + 1)}
+            />
+          </Pagination>
+        </div>
+      </React.Fragment>
     );
   }
 }
