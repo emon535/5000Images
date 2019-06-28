@@ -2,11 +2,21 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Row, Col, Container } from "reactstrap";
 import "./ImageList.css";
+import Paginator from "./../Paginator/Paginator";
 
 class ImageList extends Component {
-  state = {
-    persons: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      persons: [],
+      currentPage: null,
+      numberOfItemPerPage: 200,
+      startIndex: 1,
+      endIndex: 100
+    };
+
+    this.handleChangePage = this.handleChangePage.bind(this);
+  }
 
   componentDidMount() {
     axios.get(`https://jsonplaceholder.typicode.com/photos`).then(res => {
@@ -16,19 +26,41 @@ class ImageList extends Component {
   }
 
   _getImageList(images) {
-    return images.map(eachperson => (
-      <React.Fragment>
-        <Col sm={4} className="imageBox">
-          <div className="title">{eachperson.title}</div>
-          <img className="images" src={eachperson.url} />
-        </Col>
-      </React.Fragment>
-    ));
+    return images
+      .slice(this.state.startIndex, this.state.endIndex)
+      .map(eachperson => (
+        <React.Fragment>
+          <Col sm={4} className="imageBox">
+            <div className="title">{eachperson.title}</div>
+            <img className="images" src={eachperson.url} />
+          </Col>
+        </React.Fragment>
+      ));
+  }
+
+  componentWillReceiveProps(nextProps) {
+    let endIndex = this.state.startIndex + this.state.numberOfItemPerPage;
+    this.setState({
+      endIndex
+    });
+  }
+
+  handleChangePage(startIndex, endIndex) {
+    this.setState({ startIndex, endIndex });
   }
 
   render() {
     return (
       <Container>
+        <Row>
+          <Col sm={12}>
+            <Paginator
+              listLength={this.state.persons.length}
+              numberOfItemPerPage={this.state.numberOfItemPerPage}
+              handleChangePage={this.state.handleChangePage}
+            />
+          </Col>
+        </Row>
         Image List
         <Row>{this._getImageList(this.state.persons)}</Row>
       </Container>
