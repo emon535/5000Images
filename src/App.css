@@ -16,6 +16,7 @@ h1 {
   font-weight: 600;
 }
 .heading {
+  padding: 0.7em;
 }
 @keyframes App-logo-spin {
   from {

@@ -59,11 +59,12 @@ class ImageList extends Component {
 
   render() {
     return (
-      <Container>
-        <Row>{this._getImageList(this.state.persons)}</Row>
-
-        <Row>{this._getPaginator()}</Row>
-      </Container>
+      <React.Fragment>
+        <Container>
+          <Row>{this._getImageList(this.state.persons)}</Row>
+        </Container>
+        <div classID="justify-content-center">{this._getPaginator()}</div>
+      </React.Fragment>
     );
   }
 }

@@ -2,3 +2,19 @@
   overflow-x: auto;
   margin: 0 auto;
 }
+
+.pg-item {
+  border: solid 1px white;
+  align-content: center;
+  padding: 0.3em;
+  cursor: pointer;
+}
+
+.pg-item:hover {
+  background: lightslategray;
+  color: white;
+}
+
+#paginator {
+  margin: 0 auto;
+}

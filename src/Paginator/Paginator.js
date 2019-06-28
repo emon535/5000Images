@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
+import "./Paginator.css";
 
 export default class Paginator extends Component {
   constructor(props) {
@@ -45,6 +46,7 @@ export default class Paginator extends Component {
     for (let number = 1; number <= this.state.totalPageNumber; number++) {
       items.push(
         <PaginationItem
+          className="pg-item"
           key={number}
           active={this.state.activePage === number}
           onClick={() => this.onChangePage(number)}
