@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { Suspense, lazy } from "react";
-const Images = React.lazy(() => import("./Components/ImageList"));
+const Images = lazy(() => import("./Components/ImageList"));
 // import Images from "./Components/ImageList";
 
 function App() {
