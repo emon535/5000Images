@@ -1,0 +1,24 @@
+body {
+  background: lightblue !important;
+}
+
+.imageBox {
+  border: solid 3px lightgray;
+  padding: 1px;
+}
+
+.images {
+  width: 100%;
+  padding: 1em;
+}
+
+.title {
+  margin: 0.2em;
+  max-height: 100px;
+  line-height: 50px;
+  color: white;
+  padding: 1em;
+  font-size: 24px;
+  font-family: initial;
+  font-variant: all-petite-caps;
+}
