@@ -66,7 +66,6 @@ export default class Paginator extends Component {
                 onClick={() => this.onChangePage(this.state.activePage - 1)}
               />
             </PaginationItem>
-
             {items}
             <PaginationLink
               next
