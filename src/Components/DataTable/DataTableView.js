@@ -36,13 +36,13 @@ class DataTableView extends Component {
         },
         {
           id: "url",
-          Header: "URL",
-          accessor: d => d.url.toUpperCase().slice(15, 20) + " Color"
+          Header: "Code",
+          accessor: d => " Color Code = #" + d.url.toUpperCase().slice(32, 100)
         },
         {
           id: "description",
-          Header: "Description",
-          accessor: d => d.url.toUpperCase()
+          Header: "URL",
+          accessor: d => d.url
         }
       ],
       pageSizeOptions: [100, 250, 500, 1000, 5000]
