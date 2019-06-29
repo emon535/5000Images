@@ -1,5 +1,5 @@
 import APIService from "./APIService";
-import AppConfig from "./../AppConfig";
+import AppConfig from "../../AppConfig";
 
 const mockResponse = { hello: "world" };
 
