@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Row, Col, Container } from "reactstrap";
+import { Row, Col, Container, Table } from "reactstrap";
 import "./ImageList.css";
 import Paginator from "./../Paginator/Paginator";
 
@@ -9,9 +9,9 @@ class ImageList extends Component {
     super(props);
     this.state = {
       persons: [],
-      numberOfItemPerPage: 90,
+      numberOfItemPerPage: 250,
       startIndex: 0,
-      endIndex: 90
+      endIndex: 250
     };
 
     this.handleChangePage = this.handleChangePage.bind(this);
@@ -27,14 +27,23 @@ class ImageList extends Component {
   _getImageList(images) {
     return images
       .slice(this.state.startIndex, this.state.endIndex)
-      .map(eachperson => (
+      .map((eachperson, index) => (
         <React.Fragment>
-          <Col sm={4}>
-            <div className="imageBox">
-              <img className="images" src={eachperson.url} />
+          <tr>
+            <th className="clickable-row" scope="row">
+              {" "}
+              {eachperson.id}
+            </th>
+            <td>
+              <img className="images" src={eachperson.thumbnailUrl} />
+            </td>
+            <td>
               <div className="title">{eachperson.title}</div>
-            </div>
-          </Col>
+            </td>
+            <td>
+              <div className="title">{eachperson.albumId}</div>
+            </td>
+          </tr>
         </React.Fragment>
       ));
   }
@@ -61,7 +70,14 @@ class ImageList extends Component {
     return (
       <React.Fragment>
         <Container>
-          <Row>{this._getImageList(this.state.persons)}</Row>
+          <Table dark striped hover size="sm">
+            <thead />
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <tbody>{this._getImageList(this.state.persons)}</tbody>
+          </Table>
         </Container>
         <div classID="justify-content-center">{this._getPaginator()}</div>
       </React.Fragment>

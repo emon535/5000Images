@@ -9,7 +9,7 @@ function App() {
   const greeting = "Hello";
   return (
     <div className="App">
-      <h1 className="heading">5000 Images</h1>
+      <h1 className="heading">Latest Albums</h1>
       <Suspense fallback={ClipLoader}>
         <Images greeting={greeting} />
       </Suspense>
