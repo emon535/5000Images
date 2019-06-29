@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Row, Col, Container, Table } from "reactstrap";
 import "./ImageList.css";
-import Paginator from "./../Paginator/Paginator";
+import Paginator from "../Paginator/Paginator";
 
 class ImageList extends Component {
   constructor(props) {
@@ -31,7 +31,6 @@ class ImageList extends Component {
         <React.Fragment>
           <tr>
             <th className="clickable-row" scope="row">
-              {" "}
               {eachperson.id}
             </th>
             <td>
