@@ -3,7 +3,6 @@
 }
 
 .container-class {
-  background: #646b77 !important;
   color: #f8f8f8 !important;
 }
 
@@ -28,11 +27,17 @@ h1 {
 .heading {
   padding: 0.7em;
 }
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.back-to-top {
+  margin-right: 15% !important;
+  margin-bottom: 5% !important;
+}
+
+.footer {
+  margin: 10px;
+  height: 30px;
+}
+
+.light-white-line {
+  border: 0.1px solid rgb(39, 39, 39);
 }

@@ -16,7 +16,8 @@ class DataTableView extends Component {
         {
           id: "id",
           Header: props => <span>ID</span>,
-          accessor: d => d.id
+          accessor: d => d.id,
+          width: 80
         },
         {
           id: "image",
@@ -24,28 +25,33 @@ class DataTableView extends Component {
           accessor: d => {
             return (
               <div>
-                <img className="images" height={34} src={d.thumbnailUrl} />
+                <img className="images" height={30} src={d.thumbnailUrl} />
               </div>
             );
-          }
+          },
+          width: 120
         },
         {
           id: "name",
           Header: "Name",
-          accessor: d => d.title.toUpperCase()
+          accessor: d => d.title.toUpperCase(),
+          width: 400
         },
         {
-          id: "url",
-          Header: "URL",
-          accessor: d => d.url.toUpperCase().slice(15, 20) + " Color"
+          id: "code",
+          Header: "Code",
+          accessor: d => " Color Code = #" + d.url.toUpperCase().slice(32, 100),
+          width: 180
         },
         {
           id: "description",
-          Header: "Description",
-          accessor: d => d.url.toUpperCase()
+          Header: "URL",
+          accessor: d => d.url,
+          width: 250
         }
       ],
-      pageSizeOptions: [100, 250, 500, 1000, 5000]
+      pageSizeOptions: [100, 250, 500, 1000, 5000],
+      defaultResized: [100, 100, 10, 1]
     };
 
     this._onRowClick = this._onRowClick.bind(this);
@@ -62,7 +68,7 @@ class DataTableView extends Component {
       )
     );
   }
-
+  
   onHideClick() {
     return this.setState({
       showAlbumInfo: false
@@ -86,11 +92,14 @@ class DataTableView extends Component {
         {this._showAlbumInfo()}
         <Container className="container-class">
           <ReactTable
+            className="-striped -highlight"
+            resizable={true}
+            defaultResized={this.state.defaultResized}
+            showPageJump
             defaultPageSize={50}
             data={this.props.data}
             columns={this.state.columns}
             pageSizeOptions={this.state.pageSizeOptions}
-            className="-striped -highlight"
             getTrProps={(state, rowInfo, column) => {
               return {
                 onClick: (e, t) => {

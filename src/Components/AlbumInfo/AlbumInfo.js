@@ -17,7 +17,7 @@ class AlbumInfo extends Component {
       <Container className="album-info-wrapper">
         <Jumbotron className="album-jum">
           <p className="hide-button">
-            <Button color="primary" onClick={this.props.onHideClick}>
+            <Button color="dark" onClick={this.props.onHideClick}>
               hide
             </Button>
           </p>
