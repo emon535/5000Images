@@ -101,19 +101,14 @@ class DataTableView extends Component {
             columns={this.state.columns}
             pageSizeOptions={this.state.pageSizeOptions}
             getTrProps={(state, rowInfo, column) => {
-              if (rowInfo) {
-                return {
-                  onClick: (e, t) => {
-                    console.log("rowInfo", rowInfo);
-                    this._onRowClick(e, t, rowInfo);
-                  },
-                  style: {
-                    background: rowInfo.row.id > 20 ? "green" : "red"
-                  }
-                };
-              } else {
-                return;
-              }
+              return {
+                onClick: (e, t) => {
+                  this._onRowClick(e, t, rowInfo);
+                },
+                style: {
+                  background: rowInfo && state.selected ? "green" : "#6c757d"
+                }
+              };
             }}
           />
         </Container>
