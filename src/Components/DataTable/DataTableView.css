@@ -5,3 +5,19 @@
   height: 50px;
   border-radius: 50%;
 }
+
+.borderCellCls {
+  border-right: 2px solid rgba(0, 0, 0, 0.6) !important;
+  border-left: 2px solid rgba(0, 0, 0, 0.6) !important;
+}
+
+.ReactTable {
+  border: 0 !important;
+}
+
+.rt-thead {
+  background: darkgray;
+  color: whitesmoke;
+  font-size: 18px;
+  border-radius: 5px 5px 0px 0px;
+}

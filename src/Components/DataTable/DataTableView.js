@@ -16,7 +16,8 @@ class DataTableView extends Component {
         {
           id: "id",
           Header: props => <span>ID</span>,
-          accessor: d => d.id
+          accessor: d => d.id,
+          width: 80
         },
         {
           id: "image",
@@ -27,25 +28,30 @@ class DataTableView extends Component {
                 <img className="images" height={34} src={d.thumbnailUrl} />
               </div>
             );
-          }
+          },
+          width: 120
         },
         {
           id: "name",
           Header: "Name",
-          accessor: d => d.title.toUpperCase()
+          accessor: d => d.title.toUpperCase(),
+          width: 330
         },
         {
-          id: "url",
+          id: "code",
           Header: "Code",
-          accessor: d => " Color Code = #" + d.url.toUpperCase().slice(32, 100)
+          accessor: d => " Color Code = #" + d.url.toUpperCase().slice(32, 100),
+          width: 150
         },
         {
           id: "description",
           Header: "URL",
-          accessor: d => d.url
+          accessor: d => d.url,
+          width: 250
         }
       ],
-      pageSizeOptions: [100, 250, 500, 1000, 5000]
+      pageSizeOptions: [100, 250, 500, 1000, 5000],
+      defaultResized: [100, 100, 10, 1]
     };
 
     this._onRowClick = this._onRowClick.bind(this);
@@ -86,20 +92,28 @@ class DataTableView extends Component {
         {this._showAlbumInfo()}
         <Container className="container-class">
           <ReactTable
+            className="-striped -highlight"
+            resizable={true}
+            defaultResized={this.state.defaultResized}
+            showPageJump
             defaultPageSize={50}
             data={this.props.data}
             columns={this.state.columns}
             pageSizeOptions={this.state.pageSizeOptions}
-            className="-striped -highlight"
             getTrProps={(state, rowInfo, column) => {
-              return {
-                onClick: (e, t) => {
-                  this._onRowClick(e, t, rowInfo);
-                },
-                style: {
-                  background: rowInfo && state.selected ? "green" : "#6c757d"
-                }
-              };
+              if (rowInfo) {
+                return {
+                  onClick: (e, t) => {
+                    console.log("rowInfo", rowInfo);
+                    this._onRowClick(e, t, rowInfo);
+                  },
+                  style: {
+                    background: rowInfo.row.id > 20 ? "green" : "red"
+                  }
+                };
+              } else {
+                return;
+              }
             }}
           />
         </Container>
