@@ -21,3 +21,8 @@
   font-size: 18px;
   border-radius: 5px 5px 0px 0px;
 }
+
+.-btn {
+  background: darkgray !important;
+  color: white !important;
+}

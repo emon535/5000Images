@@ -29,5 +29,15 @@ h1 {
 }
 
 .back-to-top {
-  margin-right: 310px !important;
+  margin-right: 15% !important;
+  margin-bottom: 5% !important;
+}
+
+.footer {
+  margin: 10px;
+  height: 30px;
+}
+
+.light-white-line {
+  border: 0.1px solid rgb(39, 39, 39);
 }

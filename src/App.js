@@ -40,6 +40,19 @@ class App extends Component {
     );
   }
 
+  _getFooter() {
+    return (
+      <div className="footer">
+        <br />
+        <br />
+        <hr className="light-white-line" />
+        Powered by Foysal Ahemd Emon
+        <br />
+        <br />
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="App">
@@ -49,6 +62,7 @@ class App extends Component {
           <DataTable />
         </Suspense>
         {this._getBackToTopButton()}
+        {this._getFooter()}
       </div>
     );
   }
