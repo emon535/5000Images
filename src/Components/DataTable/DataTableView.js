@@ -25,7 +25,7 @@ class DataTableView extends Component {
           accessor: d => {
             return (
               <div>
-                <img className="images" height={34} src={d.thumbnailUrl} />
+                <img className="images" height={30} src={d.thumbnailUrl} />
               </div>
             );
           },
@@ -35,13 +35,13 @@ class DataTableView extends Component {
           id: "name",
           Header: "Name",
           accessor: d => d.title.toUpperCase(),
-          width: 330
+          width: 400
         },
         {
           id: "code",
           Header: "Code",
           accessor: d => " Color Code = #" + d.url.toUpperCase().slice(32, 100),
-          width: 150
+          width: 180
         },
         {
           id: "description",
@@ -68,7 +68,7 @@ class DataTableView extends Component {
       )
     );
   }
-
+  
   onHideClick() {
     return this.setState({
       showAlbumInfo: false

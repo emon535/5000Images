@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-
-import { Spinner, Footer } from "reactstrap";
+import { Spinner } from "reactstrap";
 import { Suspense, lazy } from "react";
 import "./App.css";
+import BackToTop from "react-back-to-top-button";
+import { FaChevronCircleUp } from "react-icons/fa";
+import { IconContext } from "react-icons";
 
 const DataTable = lazy(() => import("./Components/DataTable/DataTable"));
 const Images = lazy(() => import("./Components/ImageList/ImageList"));
@@ -22,6 +24,22 @@ class App extends Component {
       </div>
     );
   }
+
+  _getBackToTopButton() {
+    return (
+      <BackToTop
+        className="up-button"
+        showAt={100}
+        speed={1500}
+        easing="easeInOutQuint"
+      >
+        <IconContext.Provider value={{ color: "#f2f2f2" }}>
+          <FaChevronCircleUp />
+        </IconContext.Provider>
+      </BackToTop>
+    );
+  }
+
   render() {
     return (
       <div className="App">
@@ -30,6 +48,7 @@ class App extends Component {
           {/* <Images /> */}
           <DataTable />
         </Suspense>
+        {this._getBackToTopButton()}
       </div>
     );
   }
