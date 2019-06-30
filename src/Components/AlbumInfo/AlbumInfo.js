@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import {
-  Container,
-  Jumbotron,
   Button,
   Card,
   CardBody,
@@ -10,7 +8,6 @@ import {
   CardFooter,
   CardHeader
 } from "reactstrap";
-import "./AlbumInfo.css";
 
 class AlbumInfo extends Component {
   _getAlbumInfo(albumInfo) {
