@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 import "./Paginator.css";
 
+// Notice
+// This paginator component is used in ImageList Component, Not used in the previwed code.
+
 export default class Paginator extends Component {
   constructor(props) {
     super(props);

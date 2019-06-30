@@ -9,19 +9,19 @@ class DataTableView extends Component {
     super(props);
     this.state = {
       selected: null,
-      rowEdit: null,
+      rowSelected: null,
       selectionChanged: false,
       columns: [
         {
           id: "id",
+          width: 50,
           Header: props => <span>ID</span>,
           accessor: d => d.id,
-          width: "10%",
           getProps: (state, rowInfo, column) => {
             return {
               style: {
                 textAlign: "center"
-              },
+              }
             };
           }
         },
@@ -40,34 +40,28 @@ class DataTableView extends Component {
             return {
               style: {
                 textAlign: "center"
-              },
+              }
             };
           }
         },
         {
           id: "name",
           Header: "Name",
-
-          accessor: d => d.title.toUpperCase(),
-
+          accessor: d => d.title.toUpperCase()
         },
         {
           id: "code",
           Header: "Code",
-          accessor: d => " Color Code = #" + d.url.toUpperCase().slice(32, 100),
-
+          accessor: d => " Color Code = #" + d.url.toUpperCase().slice(32, 100)
         },
         {
           id: "description",
           Header: "URL",
-
-          accessor: d => d.url,
-
+          accessor: d => d.url
         }
       ],
-      pageSizeOptions: [100, 250, 500, 1000, 5000],
+      pageSizeOptions: [100, 250, 500, 1000, 5000]
     };
-
   }
 
   render() {
@@ -78,7 +72,6 @@ class DataTableView extends Component {
         <ReactTable
           className="-striped -highlight"
           resizable={true}
-          defaultResized={this.state.defaultResized}
           showPageJump
           defaultPageSize={50}
           data={this.props.data}
@@ -88,26 +81,25 @@ class DataTableView extends Component {
             if (rowInfo && rowInfo.row) {
               return {
                 onClick: (e, t) => {
-                  console.log("inside");
                   this.props._onRowClick(e, t, rowInfo);
-                  if (rowInfo.index !== this.state.rowEdit) {
+                  if (rowInfo.index !== this.state.rowSelected) {
                     this.setState({
-                      rowEdit: rowInfo.index,
-                      selectedRowIndex: rowInfo.original,
+                      rowSelected: rowInfo.index,
                       selectionChanged: this.state.selectionChanged
                         ? false
                         : true
                     });
                   } else {
                     this.setState({
-                      rowEdit: null
+                      rowSelected: null
                     });
                   }
-
                 },
                 style: {
                   background:
-                    rowInfo.index === this.state.rowEdit ? "#eaeaea" : "white",
+                    rowInfo.index === this.state.rowSelected
+                      ? "#eaeaea"
+                      : "white",
                   color: "#444444"
                 }
               };
@@ -116,7 +108,6 @@ class DataTableView extends Component {
             }
           }}
         />
-
       </React.Fragment>
     );
   }

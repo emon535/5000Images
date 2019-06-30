@@ -1,9 +1,4 @@
 .App {
-  
-}
-
-.container-class {
-  
 }
 
 body {
@@ -26,14 +21,13 @@ h1 {
 }
 .heading {
   text-align: center;
-  margin: .5em;
+  margin: 0.5em;
 }
-
-
 
 .footer {
   margin: 10px;
   height: 30px;
+  text-align: center;
 }
 
 .light-white-line {

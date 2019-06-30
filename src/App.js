@@ -8,11 +8,9 @@ import { IconContext } from "react-icons";
 import AlbumInfo from "./Components/AlbumInfo/AlbumInfo";
 
 const DataTable = lazy(() => import("./Components/DataTable/DataTable"));
-const Images = lazy(() => import("./Components/ImageList/ImageList"));
-
+// const Images = lazy(() => import("./Components/ImageList/ImageList"));
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -20,36 +18,37 @@ class App extends Component {
       rowInfo: {
         id: 0,
         title: "Some Title",
-        thumbnailUrl: "https://via.placeholder.com/150",
+        thumbnailUrl: "https://via.placeholder.com/150/66b7d2",
         url: "www.foysalahmed.net"
       }
-    }
+    };
+
     this._showAlbumInfo = this._showAlbumInfo.bind(this);
     this._onHideClick = this._onHideClick.bind(this);
     this._rowClickHandler = this._rowClickHandler.bind(this);
   }
 
-
-  _rowClickHandler(rowInfo) {
-    console.log("from APP, Rowinfo", rowInfo)
-    this.setState({
-      rowInfo: rowInfo.original,
-      showAlbumInfo: true
-    });
-
-  }
-
   _showAlbumInfo() {
     return (
       this.state.showAlbumInfo && (
-        <AlbumInfo
-          {...this.state}
-          onHideClick={this._onHideClick}
-        />
+        <AlbumInfo {...this.state} onHideClick={this._onHideClick} />
       )
     );
   }
 
+  _onHideClick() {
+    return this.setState({
+      showAlbumInfo: false
+    });
+  }
+
+  _rowClickHandler(rowInfo) {
+    console.log("from APP, Rowinfo", rowInfo);
+    this.setState({
+      rowInfo: rowInfo.original,
+      showAlbumInfo: true
+    });
+  }
 
   _getLoader() {
     return (
@@ -68,36 +67,19 @@ class App extends Component {
 
   _getBackToTopButton() {
     return (
-      <BackToTop
-        className="up-button"
-        showAt={100}
-        speed={1500}
-        easing="easeInOutQuint"
-      >
+      <BackToTop showAt={100} speed={1500} easing="easeInOutQuint">
         <IconContext.Provider value={{ color: "#444444" }}>
           <FaChevronCircleUp />
         </IconContext.Provider>
-      </BackToTop >
+      </BackToTop>
     );
   }
-
-
-  _onHideClick() {
-    return this.setState({
-      showAlbumInfo: false
-    });
-  }
-
 
   _getFooter() {
     return (
       <div className="footer">
-        <br />
-        <br />
-        <hr className="light-white-line" />
+        <hr />
         Powered by Foysal Ahemd Emon
-        <br />
-        <br />
       </div>
     );
   }
@@ -110,22 +92,20 @@ class App extends Component {
             <Col sm={12}>
               <h1 className="heading">Latest Albums</h1>
             </Col>
-
             <Col sm={8}>
               <Suspense fallback={this._getLoader()}>
-                <DataTable {...this.state} _rowClickHandler={(rowInfo) => this._rowClickHandler(rowInfo)} />
+                <DataTable
+                  {...this.state}
+                  _rowClickHandler={rowInfo => this._rowClickHandler(rowInfo)}
+                />
               </Suspense>
             </Col>
-
-            <Col sm={4}>
-              {this._showAlbumInfo()}
-            </Col>
-
+            <Col sm={4}>{this._showAlbumInfo()}</Col>
           </Row>
           {this._getBackToTopButton()}
           {this._getFooter()}
         </Container>
-      </div >
+      </div>
     );
   }
 }
