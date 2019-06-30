@@ -25,7 +25,8 @@ h1 {
   font-weight: 600;
 }
 .heading {
-  padding: 0.7em;
+  text-align: center;
+  margin: .5em;
 }
 
 

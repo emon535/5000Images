@@ -14,7 +14,7 @@
 .ReactTable {
   border: 1px solid lightgray !important;
   cursor: pointer;
-  max-height: 512px;
+  max-height: 600px;
   border-radius: 5px;
 }
 
