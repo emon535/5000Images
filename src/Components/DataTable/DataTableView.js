@@ -9,7 +9,7 @@ class DataTableView extends Component {
     super(props);
     this.state = {
       selected: null,
-      rowEdit: null,
+      rowSelected: null,
       selectionChanged: false,
       columns: [
         {
@@ -72,7 +72,6 @@ class DataTableView extends Component {
         <ReactTable
           className="-striped -highlight"
           resizable={true}
-          defaultResized={this.state.defaultResized}
           showPageJump
           defaultPageSize={50}
           data={this.props.data}
@@ -82,25 +81,25 @@ class DataTableView extends Component {
             if (rowInfo && rowInfo.row) {
               return {
                 onClick: (e, t) => {
-                  console.log("inside");
                   this.props._onRowClick(e, t, rowInfo);
-                  if (rowInfo.index !== this.state.rowEdit) {
+                  if (rowInfo.index !== this.state.rowSelected) {
                     this.setState({
-                      rowEdit: rowInfo.index,
-                      selectedRowIndex: rowInfo.original,
+                      rowSelected: rowInfo.index,
                       selectionChanged: this.state.selectionChanged
                         ? false
                         : true
                     });
                   } else {
                     this.setState({
-                      rowEdit: null
+                      rowSelected: null
                     });
                   }
                 },
                 style: {
                   background:
-                    rowInfo.index === this.state.rowEdit ? "#eaeaea" : "white",
+                    rowInfo.index === this.state.rowSelected
+                      ? "#eaeaea"
+                      : "white",
                   color: "#444444"
                 }
               };

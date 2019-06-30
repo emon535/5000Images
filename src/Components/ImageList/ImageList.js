@@ -4,6 +4,15 @@ import { Row, Col, Container, Table } from "reactstrap";
 import "./ImageList.css";
 import Paginator from "../Paginator/Paginator";
 
+
+// NOTICE : 
+// This code is not used in this project finally
+// Initially I made  a image gallery with the 5000 images and this code works but not complete.
+// if you want to see what this code does, you can import this to App.js component.
+// Here I used custom paginator and axios request.
+
+
+
 class ImageList extends Component {
   constructor(props) {
     super(props);

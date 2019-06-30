@@ -13,17 +13,7 @@ import {
 import "./AlbumInfo.css";
 
 class AlbumInfo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      hideme: false
-    };
-
-    this._getAlbumInfo = this._getAlbumInfo.bind(this);
-  }
-
   _getAlbumInfo(albumInfo) {
-    console.log(albumInfo, " from albumInfoComponent");
     return (
       <React.Fragment>
         <Card>
@@ -32,7 +22,7 @@ class AlbumInfo extends Component {
           </CardHeader>
           <img src={albumInfo.thumbnailUrl} />
           <CardBody>
-            <CardTitle className="lead">{albumInfo.title}</CardTitle>
+            <CardTitle className="h4">{albumInfo.title}</CardTitle>
             <hr />
             <CardText className="blockquote">
               {" "}
