@@ -126,9 +126,9 @@ class DataTableView extends Component {
                   },
                   style: {
                     background:
-                      rowInfo.index === this.state.rowEdit ? "#2f3238" : "white",
+                      rowInfo.index === this.state.rowEdit ? "silver" : "#9e9e9e",
                     color:
-                      rowInfo.index === this.state.rowEdit ? "white" : "black"
+                      rowInfo.index === this.state.rowEdit ? "white" : "white"
                   }
                 };
               } else {
