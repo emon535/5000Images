@@ -13,6 +13,7 @@ class AlbumInfo extends Component {
   }
 
   _getAlbumInfo(albumInfo) {
+    console.log(albumInfo, " from albumInfoComponent")
     return (
       <Container className="album-info-wrapper">
         <Jumbotron className="album-jum">
@@ -42,7 +43,6 @@ class AlbumInfo extends Component {
 
   render() {
     const albumInfo = this.props.rowInfo;
-    console.log(this.props);
     return <React.Fragment>{this._getAlbumInfo(albumInfo)}</React.Fragment>;
   }
 }

@@ -1,14 +1,14 @@
 .App {
-  text-align: center;
+  
 }
 
 .container-class {
-  color: #f8f8f8 !important;
+  
 }
 
 body {
-  background: #2f3238 !important;
-  color: #f5f5f5 !important;
+  background: #f0eeee !important;
+  color: #444444 !important;
 }
 
 :root {
@@ -28,10 +28,7 @@ h1 {
   padding: 0.7em;
 }
 
-.back-to-top {
-  margin-right: 15% !important;
-  margin-bottom: 5% !important;
-}
+
 
 .footer {
   margin: 10px;
