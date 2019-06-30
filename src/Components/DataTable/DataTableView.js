@@ -14,14 +14,14 @@ class DataTableView extends Component {
       columns: [
         {
           id: "id",
+          width: 50,
           Header: props => <span>ID</span>,
           accessor: d => d.id,
-          width: "10%",
           getProps: (state, rowInfo, column) => {
             return {
               style: {
                 textAlign: "center"
-              },
+              }
             };
           }
         },
@@ -40,34 +40,28 @@ class DataTableView extends Component {
             return {
               style: {
                 textAlign: "center"
-              },
+              }
             };
           }
         },
         {
           id: "name",
           Header: "Name",
-
-          accessor: d => d.title.toUpperCase(),
-
+          accessor: d => d.title.toUpperCase()
         },
         {
           id: "code",
           Header: "Code",
-          accessor: d => " Color Code = #" + d.url.toUpperCase().slice(32, 100),
-
+          accessor: d => " Color Code = #" + d.url.toUpperCase().slice(32, 100)
         },
         {
           id: "description",
           Header: "URL",
-
-          accessor: d => d.url,
-
+          accessor: d => d.url
         }
       ],
-      pageSizeOptions: [100, 250, 500, 1000, 5000],
+      pageSizeOptions: [100, 250, 500, 1000, 5000]
     };
-
   }
 
   render() {
@@ -103,7 +97,6 @@ class DataTableView extends Component {
                       rowEdit: null
                     });
                   }
-
                 },
                 style: {
                   background:
@@ -116,7 +109,6 @@ class DataTableView extends Component {
             }
           }}
         />
-
       </React.Fragment>
     );
   }
