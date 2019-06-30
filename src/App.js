@@ -17,7 +17,12 @@ class App extends Component {
     super(props);
     this.state = {
       showAlbumInfo: true,
-      rowInfo: []
+      rowInfo: {
+        id: 0,
+        title: "Some Title",
+        thumbnailUrl: "https://via.placeholder.com/150",
+        url: "www.foysalahmed.net"
+      }
     }
     this._showAlbumInfo = this._showAlbumInfo.bind(this);
     this._onHideClick = this._onHideClick.bind(this);

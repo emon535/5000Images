@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Jumbotron, Button } from "reactstrap";
+import { Container, Jumbotron, Button, Card, CardBody, CardText, CardTitle, CardFooter, CardHeader } from "reactstrap";
 import "./AlbumInfo.css";
 
 class AlbumInfo extends Component {
@@ -15,29 +15,24 @@ class AlbumInfo extends Component {
   _getAlbumInfo(albumInfo) {
     console.log(albumInfo, " from albumInfoComponent")
     return (
-      <Container className="album-info-wrapper">
-        <Jumbotron className="album-jum">
-          <p className="hide-button">
+      <React.Fragment>
+        <Card>
+          <CardHeader>Album ID #{albumInfo.id}</CardHeader>
+          <img src={albumInfo.thumbnailUrl} />
+          <CardBody>
+            <CardTitle>{albumInfo.title}</CardTitle>
+            <CardText>  Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed,
+            euismod in, nibh. Quisque volutpat condimentum velit. Class aptent Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed,
+            euismod in, nibh. Quisque volutpat condimentum velit. Class</CardText>
             <Button color="dark" onClick={this.props.onHideClick}>
               hide
             </Button>
-          </p>
-          <h1 className="display-1">#{albumInfo.id}</h1>
-          <img src={albumInfo.thumbnailUrl} />
-          <h3 className="display-4">{albumInfo.title}</h3>
-          <p className="lead">
-            Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed,
-            euismod in, nibh. Quisque volutpat condimentum velit. Class aptent
-            taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-            himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis,
-            tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla
-            facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a
-            tellus consequat imperdiet. Vestibulum sapien.
-          </p>
-          <hr className="my-2" />
-          {albumInfo.url}
-        </Jumbotron>
-      </Container>
+          </CardBody>
+
+
+          <CardFooter>{albumInfo.url}</CardFooter>
+        </Card>
+      </React.Fragment>
     );
   }
 
