@@ -12,6 +12,8 @@ class DataTableView extends Component {
       showAlbumInfo: false,
       selected: null,
       rowInfo: null,
+      rowEdit: null,
+      selectionChanged: false,
       columns: [
         {
           id: "id",
@@ -68,7 +70,7 @@ class DataTableView extends Component {
       )
     );
   }
-  
+
   onHideClick() {
     return this.setState({
       showAlbumInfo: false
@@ -100,15 +102,38 @@ class DataTableView extends Component {
             data={this.props.data}
             columns={this.state.columns}
             pageSizeOptions={this.state.pageSizeOptions}
-            getTrProps={(state, rowInfo, column) => {
-              return {
-                onClick: (e, t) => {
-                  this._onRowClick(e, t, rowInfo);
-                },
-                style: {
-                  background: rowInfo && state.selected ? "green" : "#6c757d"
-                }
-              };
+            getTrProps={(state, rowInfo) => {
+              if (rowInfo && rowInfo.row) {
+                return {
+                  onClick: (e, t) => {
+                    console.log("inside");
+                    this._onRowClick(e, t, rowInfo);
+                    if (rowInfo.index != this.state.rowEdit) {
+                      this.setState({
+                        rowEdit: rowInfo.index,
+                        selectedRowIndex: rowInfo.original,
+                        selectionChanged: this.state.selectionChanged
+                          ? false
+                          : true
+                      });
+                    } else {
+                      this.setState({
+                        rowEdit: null
+                      });
+                    }
+                    console.log(rowInfo.index);
+                    console.log(this.state.rowEdit);
+                  },
+                  style: {
+                    background:
+                      rowInfo.index === this.state.rowEdit ? "#2f3238" : "white",
+                    color:
+                      rowInfo.index === this.state.rowEdit ? "white" : "black"
+                  }
+                };
+              } else {
+                return {};
+              }
             }}
           />
         </Container>
