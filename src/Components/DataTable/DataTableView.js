@@ -81,7 +81,7 @@ class DataTableView extends Component {
             if (rowInfo && rowInfo.row) {
               return {
                 onClick: (e, t) => {
-                  this.props._onRowClick(e, t, rowInfo);
+                  this.props.onRowClick(e, t, rowInfo);
                   if (rowInfo.index !== this.state.rowSelected) {
                     this.setState({
                       rowSelected: rowInfo.index,

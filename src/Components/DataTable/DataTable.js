@@ -26,7 +26,7 @@ class DataTable extends Component {
   }
 
   componentDidMount() {
-    this.getData();
+    this._getData();
   }
 
   onRowClick(e, t, rowInfo) {
