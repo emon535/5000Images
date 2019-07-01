@@ -10,12 +10,12 @@ class DataTable extends Component {
     };
 
     this.DataService = new DataService();
-    this.getData = this.getData.bind(this);
+    this._getData = this._getData.bind(this);
 
-    this._onRowClick = this._onRowClick.bind(this);
+    this.onRowClick = this.onRowClick.bind(this);
   }
 
-  getData() {
+  _getData() {
     this.DataService.getRequiredData().then(data => {
       console.log("Getting Data");
       this.setState({
@@ -29,12 +29,12 @@ class DataTable extends Component {
     this.getData();
   }
 
-  _onRowClick(e, t, rowInfo) {
-    this.props._rowClickHandler(rowInfo);
+  onRowClick(e, t, rowInfo) {
+    this.props.rowClickHandler(rowInfo);
   }
 
   render() {
-    return <DataTableView {...this.state} _onRowClick={this._onRowClick} />;
+    return <DataTableView {...this.state} onRowClick={this.onRowClick} />;
   }
 }
 
