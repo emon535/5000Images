@@ -7,7 +7,7 @@
 .ReactTable {
   border: 1px solid lightgray !important;
   cursor: pointer;
-  max-height: 700px;
+  height: 70vh;
 }
 
 .rt-thead {

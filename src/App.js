@@ -85,6 +85,7 @@ class App extends Component {
   }
 
   render() {
+    const colSize = (this.state.showAlbumInfo) ? 8 : 12;
     return (
       <div className="App">
         <Container className="container-class">
@@ -92,7 +93,7 @@ class App extends Component {
             <Col sm={12}>
               <h1 className="heading">Latest Albums</h1>
             </Col>
-            <Col sm={8}>
+            <Col sm={colSize}>
               <Suspense fallback={this._getLoader()}>
                 <DataTable
                   {...this.state}
