@@ -24,25 +24,25 @@ class App extends Component {
     };
 
     this._showAlbumInfo = this._showAlbumInfo.bind(this);
-    this._onHideClick = this._onHideClick.bind(this);
-    this._rowClickHandler = this._rowClickHandler.bind(this);
+    this.onHideClick = this.onHideClick.bind(this);
+    this.rowClickHandler = this.rowClickHandler.bind(this);
   }
 
   _showAlbumInfo() {
     return (
       this.state.showAlbumInfo && (
-        <AlbumInfo {...this.state} onHideClick={this._onHideClick} />
+        <AlbumInfo {...this.state} onHideClick={this.onHideClick} />
       )
     );
   }
 
-  _onHideClick() {
+  onHideClick() {
     return this.setState({
       showAlbumInfo: false
     });
   }
 
-  _rowClickHandler(rowInfo) {
+  rowClickHandler(rowInfo) {
     console.log("from APP, Rowinfo", rowInfo);
     this.setState({
       rowInfo: rowInfo.original,
@@ -85,7 +85,7 @@ class App extends Component {
   }
 
   render() {
-    const colSize = (this.state.showAlbumInfo) ? 8 : 12;
+    const colSize = this.state.showAlbumInfo ? 8 : 12;
     return (
       <div className="App">
         <Container className="container-class">
@@ -97,7 +97,7 @@ class App extends Component {
               <Suspense fallback={this._getLoader()}>
                 <DataTable
                   {...this.state}
-                  _rowClickHandler={rowInfo => this._rowClickHandler(rowInfo)}
+                  rowClickHandler={rowInfo => this.rowClickHandler(rowInfo)}
                 />
               </Suspense>
             </Col>
