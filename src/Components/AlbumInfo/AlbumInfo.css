@@ -9,4 +9,5 @@
 }
 .hide-button{
     float: right;
+    cursor: pointer;
 }

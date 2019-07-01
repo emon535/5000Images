@@ -17,10 +17,8 @@ class AlbumInfo extends Component {
       <React.Fragment>
         <Card>
           <CardHeader>
-            <p className="header-text">Album ID #{albumInfo.id}</p>
-            <Button color="light" onClick={this.props.onHideClick} className="hide-button">
-              hide
-            </Button>
+            <h4 className="header-text">Album ID #{albumInfo.id}</h4>
+            <Button className="hide-button" onClick={this.props.onHideClick} close />
           </CardHeader>
           <img src={albumInfo.thumbnailUrl} />
 
