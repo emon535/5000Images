@@ -1,8 +1,9 @@
-
 ## Screenshot:
-![alt text](https://github.com/emon535/5000Images/blob/development/src/latestr.png)
 
-## Available Live Demo: 
+![alt text](https://github.com/emon535/5000Images/blob/development/src/preview.png)
+
+## Available Live Demo:
+
 https://emon535.github.io/5000Images/
 
 ## Available Scripts
@@ -31,4 +32,3 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
