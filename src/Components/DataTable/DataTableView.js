@@ -66,14 +66,16 @@ class DataTableView extends Component {
 
   render() {
     console.log(this.props);
-    console.log("from view ", this.props.data);
+    console.log("show pagination", this.props.showPagination);
     return (
       <React.Fragment>
         <ReactTable
           className="-striped -highlight"
           resizable={true}
           showPageJump
-          defaultPageSize={50}
+          showPagination={this.props.showPagination}
+          pageSize={this.props.showPagination ? 50 : this.props.data.length}
+          // defaultPageSize={500}
           data={this.props.data}
           columns={this.state.columns}
           pageSizeOptions={this.state.pageSizeOptions}

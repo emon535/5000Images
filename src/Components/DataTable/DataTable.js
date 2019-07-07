@@ -34,7 +34,7 @@ class DataTable extends Component {
   }
 
   render() {
-    return <DataTableView {...this.state} _onRowClick={this._onRowClick} />;
+    return <DataTableView {...this.props}{...this.state} _onRowClick={this._onRowClick} />;
   }
 }
 

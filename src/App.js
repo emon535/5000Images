@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Spinner, Container, Row, Col } from "reactstrap";
+import { Spinner, Container, Row, Col, Button } from "reactstrap";
 import { Suspense, lazy } from "react";
 import "./App.css";
 import BackToTop from "react-back-to-top-button";
@@ -15,6 +15,7 @@ class App extends Component {
     super(props);
     this.state = {
       showAlbumInfo: true,
+      showPagination: true,
       rowInfo: {
         id: 0,
         title: "Some Title",
@@ -26,6 +27,7 @@ class App extends Component {
     this._showAlbumInfo = this._showAlbumInfo.bind(this);
     this._onHideClick = this._onHideClick.bind(this);
     this._rowClickHandler = this._rowClickHandler.bind(this);
+    this.disablePagination = this.disablePagination.bind(this);
   }
 
   _showAlbumInfo() {
@@ -84,6 +86,12 @@ class App extends Component {
     );
   }
 
+  disablePagination() {
+    this.setState({
+      showPagination: false
+    });
+  }
+
   render() {
     const colSize = (this.state.showAlbumInfo) ? 8 : 12;
     return (
@@ -97,16 +105,19 @@ class App extends Component {
               <Suspense fallback={this._getLoader()}>
                 <DataTable
                   {...this.state}
+
                   _rowClickHandler={rowInfo => this._rowClickHandler(rowInfo)}
                 />
               </Suspense>
             </Col>
-            <Col sm={4}>{this._showAlbumInfo()}</Col>
+            <Col sm={4}>{this._showAlbumInfo()}
+              <Button onClick={this.disablePagination} >Pagination OFf</Button></Col>
+
           </Row>
           {this._getBackToTopButton()}
           {this._getFooter()}
         </Container>
-      </div>
+      </div >
     );
   }
 }
