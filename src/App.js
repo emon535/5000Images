@@ -111,7 +111,7 @@ class App extends Component {
               </Suspense>
             </Col>
             <Col sm={4}>{this._showAlbumInfo()}
-              <Button onClick={this.disablePagination} >Pagination OFf</Button></Col>
+              <Button onClick={this.disablePagination} >Show all records</Button></Col>
 
           </Row>
           {this._getBackToTopButton()}
